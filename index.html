@@ -2,8 +2,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="如有乐享 - IBM Cloud Lite(轻量)套餐演示">
-    <title>IBM Cloud Lite(轻量)套餐演示 - 如有乐享</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>土味站点</title>
     <link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Raleway:200">
     <link href="http://cdn.bootcss.com/pure/0.6.0/pure-min.css" rel="stylesheet" />
 	<link href="css2.css" rel="stylesheet" />
@@ -15,20 +15,16 @@
     <div id="main">
         <div class="header">
             <h1>Free IBM Cloud</h1>
-			<h2>IBM Cloud 免费试用轻量套餐演示 - <a href="http://51.RUYO.net">如有乐享</a></h2>
+			<h2>土味站点演示 - <a href="https://github.com/renchen1994/WP/">Github</a></h2>
         </div>
         <div class="content">
          <aside>
-				本站演示IBM轻量套餐的一些功能。
-				更多内容请访问：<a href="https://51.ruyo.net/12065.html">http://51.ruyo.net/12065.html</a>
+				本站演示什么是土味站点。
+				更多内容请访问：<a href="https://github.com/renchen1994/WP/">https://github.com/renchen1994/WP/</a>
          </aside>
           <h4>PHP探针</h4>
           <div class="pure-g">
 			<div class="pure-u-1"><a href='tz.php'>点击查看探针</a></div>
-		</div>
-		 <h4>外链ZIP下载</h4>
-		<div class="pure-g">
-			<div class="pure-u-1"><a href='a.zip'>演示代码打包下载</a></div>
 		</div>
 		 <h4>外链图片演示</h4>
 		<div class="pure-g">
@@ -43,12 +39,123 @@
 			</div>
 		</div>
 		</div>
+	    <div>
+    <div style="text-align: center;">
+      <input id="searchValue" value="周杰伦" type="text" oninput="change(this,'searchValue')"
+        onkeydown="keyDown(event,this)">
+      <input id="currentPage" class="short-input" value="1" type="text" oninput="change(this,'currentPage')"
+        onkeydown="keyDown(event,this)">
+      <input id="pageSize" class="short-input" value="10" type="text" oninput="change(this,'pageSize')"
+        onkeydown="keyDown(event,this)">
+      <span class="pointer" onclick="search_btn()">搜索</span>
+    </div>
+    <div id="operation" style="visibility: hidden;">
+      <span class="pointer" onclick="changePage('reduce')">上一页</span>
+      <span id="search_type"></span>
+      <span class="pointer" onclick="changePage('add')">下一页</span>
+    </div>
+
+    <div>
+      <div id="song-list">
+      </div>
+    </div>
+
+    <div>
+      <audio controls autoplay src="">
+        您的浏览器不支持 audio 标签。
+      </audio>
+    </div>
+  </div>
+  <script>
+    var list = []
+    var searchValue = '周杰伦'
+    var currentPage = 1
+    var pageSize = 10
+    var total = 9999
+    var audio = document.querySelector('audio');
+    audio.onended = function () {
+      randomGet()
+    };
+    function keyDown(event, el) {
+      if (event.keyCode === 13) {
+        search_btn()
+      }
+    }
+    function change(e, type) {
+      window[type] = document.querySelector(`#${type}`).value
+    }
+    function search_btn() {
+      if (pageSize * (currentPage - 1) > total) {
+        alert('？？？？体育老师教的？不会算有几页吗？')
+      } else {
+        xhrFuc()
+      }
+    }
+    function changePage(type) {
+      if (type == 'reduce') {
+        if (currentPage == 1) {
+          return alert('还上一页个锤子？')
+        }
+        currentPage--
+      } else if (type == 'add') {
+        currentPage++
+      }
+      search_btn()
+    }
+    function randomGet() {
+      var random = Math.random()
+      var length = list.length
+      random = Math.floor(random * length)
+      sing(list[random].contentId)
+    }
+    function xhrFuc() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("get", `http://pd.musicapp.migu.cn/MIGUM2.0/v1.0/content/search_all.do?&ua=Android_migu&version=5.0.1&text=${encodeURI(searchValue)}&pageNo=${currentPage}&pageSize=${pageSize}&searchSwitch={"song":1,"album":0,"singer":0,"tagSong":0,"mvSong":0,"songlist":0,"bestShow":1}`, true);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+          if (xhr.status == 200) {
+            let res = JSON.parse(xhr.responseText)
+            if (res.code === '000000') {
+              list = res.songResultData.result || []
+              total = res.songResultData.totalCount
+              document.querySelector('#search_type').innerHTML = `总数量：${total}&nbsp;&nbsp;&nbsp;&nbsp;当前页数：${currentPage}&nbsp;&nbsp;&nbsp;&nbsp;每页条数：${pageSize}`
+              createNode()
+            } else {
+              alert(res.info)
+            }
+          }
+        }
+      }
+      xhr.send();
+    }
+    function createSingleNode(val) {
+      return `<div class="pointer" ><span>${val.singers && val.singers.length > 0 ? val.singers[0].name : ''}</span> - <span onclick="checkSong(this)" data-contentId="${val.contentId}">${val.name}</span></div>`
+    }
+    function createNode() {
+      var node = '<div>'
+      list.map(i => {
+        node += createSingleNode(i)
+      })
+      node += '</div>'
+      document.querySelector('#song-list').innerHTML = node
+      document.querySelector('#operation').style.visibility = 'visible'
+    }
+    function checkSong($event) {
+      sing($event.dataset.contentid)
+    }
+    function sing(contentId) {
+      // 无损 formatType = SQ resourceType = E
+      // 高品 formatType = HQ resourceType = 2
+      let uri = `http://app.pd.nf.migu.cn/MIGUM2.0/v1.0/content/sub/listenSong.do?toneFlag=HQ&netType=00&userId=15548614588710179085069&ua=Android_migu&version=5.1&copyrightId=0&contentId=${contentId}&resourceType=2&channel=1`
+      audio.src = uri
+    }
+  </script>
 
         <div class="footer">
             <div class="legal pure-g">
                 <div class="pure-u-1 u-sm-1-2">
                     <p class="legal-license">
-						技术支持: <a href="http://51.ruyo.net">如有乐享</a>
+						技术支持: <a href="https://github.com/renchen1994/WP">Github</a>
                     </p>
                 </div>
 				<div class="pure-u-1 u-sm-1-2">
