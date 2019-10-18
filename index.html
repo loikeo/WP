@@ -37,7 +37,7 @@
 						</div>
 
 						<div>
-							<div id="song-list" style="cursor:pointer">
+							<div id="song-list">
 							</div>
 						</div>
 
@@ -129,7 +129,7 @@
 				xhr.send();
 			}
 			function createSingleNode(val) {
-				return `<div class="pointer" ><span>${val.singers && val.singers.length > 0 ? val.singers[0].name : ''}</span> - <span onclick="checkSong(this)" data-contentId="${val.contentId}">${val.name}</span></div>`
+				return `<div style="cursor:pointer" ><span>${val.singers && val.singers.length > 0 ? val.singers[0].name : ''}</span> - <span onclick="checkSong(this)" data-contentId="${val.contentId}">${val.name}</span></div>`
 			}
 			function createNode() {
 				var node = '<div>'
