@@ -55,8 +55,7 @@
 			<h4>MP4演示</h4>
 			<div class="pure-g">
 				<div class="pure-u-1">
-					<video controls id="v" width="500"></video>
-					<input type="button" id="p" style="width: 100px;" value="播放" onclick="ppp();" />
+					<video controls id="v" style="width: 100%;" ></video>
 				</div>
 			</div>
 			<h4>PHP探针</h4>
@@ -147,17 +146,6 @@
 				let uri = `https://app.pd.nf.migu.cn/MIGUM2.0/v1.0/content/sub/listenSong.do?toneFlag=HQ&netType=00&userId=15548614588710179085069&ua=Android_migu&version=5.1&copyrightId=0&contentId=${contentId}&resourceType=2&channel=1`
 				audio.src = uri
 			}
-			function ppp() {
-				if(v.paused) {
-					p.value = "Pause";
-					v.play();
-    				}
-    				else {
-					p.value = "Play";
-					v.pause();
-    				}
-			}
- 
 			if(Hls.isSupported()) {
     				var video = document.getElementById('v');
     				var hls = new Hls();
