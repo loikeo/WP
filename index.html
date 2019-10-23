@@ -48,10 +48,12 @@
 					</div>
 				</div>
 			</div>
-			<h4>HBO直播</h4>
+			<h4>视频播放</h4>
 			<div class="pure-g">
 				<div class="pure-u-1">
-					<video controls id="v" style="width: 100%;" ></video>
+					<input size="90" class="bat" type="url" id="source"  value="http://pili-live-hdl.qhmywl.com/dsdtv/13e83b20bc716e68221da438d761d352.m3u8">
+					<button type="submit" class="btn btn-success" onclick="javascript:loadVideo()">播放</button><br><br>
+					<video id="video" src="" style="width: 100%;" autoplay controls></video>
 				</div>
 			</div>
 			<h4>图片演示</h4>
@@ -146,23 +148,17 @@
 				let uri = `https://app.pd.nf.migu.cn/MIGUM2.0/v1.0/content/sub/listenSong.do?toneFlag=HQ&netType=00&userId=15548614588710179085069&ua=Android_migu&version=5.1&copyrightId=0&contentId=${contentId}&resourceType=2&channel=1`
 				audio.src = uri
 			}
-			if(Hls.isSupported()) {
-    				var video = document.getElementById('v');
-    				var hls = new Hls();
-    				hls.loadSource('http://pili-live-hdl.qhmywl.com/dsdtv/13e83b20bc716e68221da438d761d352.m3u8');
-    				hls.attachMedia(video);
-    				hls.on(Hls.Events.MANIFEST_PARSED,function(event, data) {
-    					console.log("manifest loaded, found " + data.levels.length + " quality level");
-    					var playPromise = video.play();
-    					if (playPromise !== undefined) {
-    						playPromise.then(_ => {
-    						// FIX DOM EX 
-    						video.pause();
-    						})
-    						.catch(error => {
-    						});
-    					}
-    				});
+			function loadVideo() {
+				var iptv = document.getElementById('source').value;
+				if(Hls.isSupported()) {
+    					var video = document.getElementById('video');
+    					var hls = new Hls();
+    					hls.loadSource(iptv);
+    					hls.attachMedia(video);
+    					hls.on(Hls.Events.MANIFEST_PARSED,function() {
+						video.play();
+					});
+				}
 			}
 		</script>
 	</div>
