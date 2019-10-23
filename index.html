@@ -51,8 +51,8 @@
 			<h4>视频播放</h4>
 			<div class="pure-g">
 				<div class="pure-u-1">
-					#<input size="90" class="bat" type="url" id="source"  value="http://pili-live-hdl.qhmywl.com/dsdtv/13e83b20bc716e68221da438d761d352.m3u8">
-					#<button type="submit" class="btn btn-success" onclick="javascript:loadVideo()">播放</button><br><br>
+					//<input size="90" class="bat" type="url" id="source"  value="http://pili-live-hdl.qhmywl.com/dsdtv/13e83b20bc716e68221da438d761d352.m3u8">
+					//<button type="submit" class="btn btn-success" onclick="javascript:loadVideo()">播放</button><br><br>
 					<span style="cursor:pointer" itv_value="http://pili-live-hdl.qhmywl.com/dsdtv/13e83b20bc716e68221da438d761d352.m3u8" onclick="javascript:loadVideo()">HBO高清</span>
 					<span style="cursor:pointer" itv_value="http://pili-live-hdl.qhmywl.com/dsdtv/77c9bab3af161386df16ad9d8a3f3541.m3u8" onclick="javascript:loadVideo()">寰宇财经</span>
 					<video id="video" src="" style="width: 100%;" autoplay controls></video>
@@ -147,7 +147,7 @@
 				audio.src = uri
 			}
 			function loadVideo() {
-				#var iptv = document.getElementById('source').value;
+				//var iptv = document.getElementById('source').value;
 				if(Hls.isSupported()) {
     					var video = document.getElementById('video');
     					var hls = new Hls();
