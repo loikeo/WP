@@ -147,7 +147,7 @@
 				audio.src = uri
 			}
 			function loadVideo() {
-				var iptv = ${itvId};
+				var iptv =  document.getElementsByTagName("span")[0].data-itvid;;
 				if(Hls.isSupported()) {
     					var video = document.getElementById('video');
     					var hls = new Hls();
