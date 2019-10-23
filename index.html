@@ -50,9 +50,8 @@
 			</div>
 			<h4>视频播放</h4>
 			<div class="pure-g">
-				<span style="cursor:pointer" data-value="http://pili-live-hdl.qhmywl.com/dsdtv/13e83b20bc716e68221da438d761d352.m3u8" onclick="javascript:loadVideo()" > HBO高清 </span>
-				
-				<span style="cursor:pointer" data-value="http://pili-live-hdl.qhmywl.com/dsdtv/77c9bab3af161386df16ad9d8a3f3541.m3u8" onclick="javascript:loadVideo()" > 寰宇财经 </span>
+				<span style="cursor:pointer" onclick="javascript:loadVideo(http://pili-live-hdl.qhmywl.com/dsdtv/13e83b20bc716e68221da438d761d352.m3u8)" > HBO高清 </span>
+				<span style="cursor:pointer" onclick="javascript:loadVideo(http://pili-live-hdl.qhmywl.com/dsdtv/77c9bab3af161386df16ad9d8a3f3541.m3u8)" > 寰宇财经 </span>
 				<video id="video" src="" style="width: 100%;" autoplay controls></video>
 			</div>
 			<h4>图片演示</h4>
@@ -143,8 +142,8 @@
 				let uri = `https://app.pd.nf.migu.cn/MIGUM2.0/v1.0/content/sub/listenSong.do?toneFlag=HQ&netType=00&userId=15548614588710179085069&ua=Android_migu&version=5.1&copyrightId=0&contentId=${contentId}&resourceType=2&channel=1`
 				audio.src = uri
 			}
-			function loadVideo() {
-				var iptv =  document.getElementsByTagName("span").data-value;;
+			function loadVideo(url) {
+				var iptv =  url;;
 				if(Hls.isSupported()) {
     					var video = document.getElementById('video');
     					var hls = new Hls();
