@@ -1,17 +1,17 @@
+<!DOCTYPE html>
 <html>
-<head>
+ <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
     <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>土味站点</title>
-    <link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Raleway:200">
+    <link rel="stylesheet" href="//g.alicdn.com/de/prismplayer/2.3.5/skins/default/aliplayer-min.css" />
     <link href="https://cdn.bootcss.com/pure/0.6.0/pure-min.css" rel="stylesheet" />
-    <link href="css2.css" rel="stylesheet" />
+    <script type="text/javascript" src="//g.alicdn.com/de/prismplayer/2.3.5/aliplayer-min.js"></script>
     <link rel="shortcut icon" href="favicon.ico">
-    <script src="https://cdn.jsdelivr.net/hls.js/latest/hls.min.js"></script>
-</head>
-<body>
+ </head>
+ <body>
 	<div id="main">
         	<div class="header">
             		<h1>It's 土味</h1>
@@ -94,7 +94,7 @@
 					<span style="cursor:pointer" onclick="loadVideo('http://pili-live-hdl.qhmywl.com/dsdtv/464311a99c6465a1f36681b73c62fa83.m3u8')">纬来体育HD</span>
 					<span style="cursor:pointer" onclick="loadVideo('http://pili-live-hdl.qhmywl.com/dsdtv/12b7289a05d4cb3c2b79f38b030e2548.m3u8')">智林体育</span>
 					<span style="cursor:pointer" onclick="loadVideo('http://nclive.grtn.cn/typd/sd/live.m3u8')">广东体育</span>
-					<video id="video" src="" style="width: 704px;height: 387px;" autoplay controls></video>
+					<div class="prism-player" id="J_prismPlayer" style="position: absolute"></div>
 				</div>
 			</div>
 			<p></p>
@@ -196,7 +196,32 @@
 					});
 				}
 			}
+			var player = new Aliplayer({
+      				id: 'J_prismPlayer',
+            				width: '100%',
+      					autoplay: true,
+      //支持播放地址播放,此播放优先级最高
+      // source: 'http://hzhls01.ys7.com:7886/hcnp/624521095_1_1_2_0_cas.ys7.com_6500.m3u8?c7babeed1205439dad7fa8cd6c81d259', // 测试地址
+      // source: 'http://hdl.live1.k2o.me/kz-live/KZCM-000004-RNFPD.flv',   // flv
+            				source: 'http://hls.live1.k2o.me/kz-live/KZCM-000004-RNFPD.m3u8',  // m3u8
+      // source: 'rtmp://rtmp.live1.k2o.me/kz-live/KZCM-000004-RNFPD',      // rtmp
+      //播放方式二：点播用户推荐
+      // vid: '1e067a2831b641db90d570b6480fbc40',
+      // playauth: '',
+      // cover: 'http://liveroom-img.oss-cn-qingdao.aliyuncs.com/logo.png',
+      //播放方式三：仅MTS用户使用
+      // vid: '1e067a2831b641db90d570b6480fbc40',
+      // accId: '',
+      // accSecret: '',
+      // stsToken: '',
+      // domainRegion: '',
+      // authInfo: '',
+      // useFlashPrism: true,  // flash播放
+    			}, 
+			function (player) {
+				console.log('播放器创建好了。')
+			});
 		</script>
 	</div>
-</body>
+ </body>
 </html>
