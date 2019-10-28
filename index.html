@@ -129,30 +129,15 @@
 		</bgm>
 		<script data-no-instant="">
 			var yaudio = new Audio();
+			var id=parseInt(1400000000*Math.random());
 			yaudio.controls = true;
 			var musicArr=[
-             			{mp3:"//music.163.com/song/media/outer/url?id=4878604&br=128000&raw=ture"},
-				{mp3:"//music.163.com/song/media/outer/url?id=513791211&br=128000&raw=ture"},
-				{mp3:"//music.163.com/song/media/outer/url?id=112678&br=128000&raw=ture"},
-				{mp3:"//music.163.com/song/media/outer/url?id=5271858&br=128000&raw=ture"},
-				{mp3:"//music.163.com/song/media/outer/url?id=461301470&br=128000&raw=ture"},
-				{mp3:"//music.163.com/song/media/outer/url?id=1313558186&br=128000&raw=ture"},
-				{mp3:"//music.163.com/song/media/outer/url?id=534067044&br=128000&raw=ture"},
-				{mp3:"//music.163.com/song/media/outer/url?id=66476&br=128000&raw=ture"},
-				{mp3:"//music.163.com/song/media/outer/url?id=190803&br=128000&raw=ture"},
-				{mp3:"//music.163.com/song/media/outer/url?id=518096340&br=128000&raw=ture"},
-				{mp3:"//music.163.com/song/media/outer/url?id=110673&br=128000&raw=ture"},
-				{mp3:"//music.163.com/song/media/outer/url?id=317691&br=128000&raw=ture"},
-				{mp3:"//music.163.com/song/media/outer/url?id=434052582&br=128000&raw=ture"},
-				{mp3:"//music.163.com/song/media/outer/url?id=1325898886&br=128000&raw=ture"},
-				{mp3:"//music.163.com/song/media/outer/url?id=135848&br=128000&raw=ture"},
-				{mp3:"//music.163.com/song/media/outer/url?id=485992506&br=128000&raw=ture"},
-				{mp3:"//music.163.com/song/media/outer/url?id=63738&br=128000&raw=ture"}
+             			{mp3:"//music.163.com/song/media/outer/url?id=${id}&br=128000&raw=ture"}
               		];
  
 			/*首次随机播放*/
 			var a=parseInt(Math.random()*musicArr.length);
-			var sj=musicArr[a];
+			var sj=musicArr[1];
 			yaudio.src=sj.mp3;
 			yaudio.play();
 		</script>
