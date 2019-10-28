@@ -129,10 +129,10 @@
 		</bgm>
 		<script data-no-instant="">
 			var yaudio = new Audio();
-			var netcastid = 1400000000
+			var netcastid = parseInt(1300000000*Math.random());
 			yaudio.controls = true;
 			var musicArr=[
-             			{mp3:"//music.163.com/song/media/outer/url?id=$4878604&br=128000&raw=ture"}
+             			{mp3:"//music.163.com/song/media/outer/url?id=${netcastid}&br=128000&raw=ture"}
               		];
  
 			/*首次随机播放*/
