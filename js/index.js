@@ -5,7 +5,7 @@ $(function () {
         currIndex = -1;
 
     function playPause() {
-        setTimeout(function () {
+        setInterval(function () {
             if (audio.paused) {
                 i.attr('class', 'iconfont icon-music');
                 audio.play();
