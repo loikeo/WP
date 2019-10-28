@@ -17,7 +17,6 @@ $(function () {
     }
 
     function selectTrack2(flag) {
-    for (; flag > 0; flag++) {
         /*
         * 歌单详细见
         * https://api.uomg.com/doc-rand.music.html
@@ -35,12 +34,11 @@ $(function () {
 
                 audio.src = json.data.url;
 
-                if (flag != 0) {
+                for (; flag > 0; flag++) {
                     audio.play();
                 }
             }
         });
-    }
     }
     function initPlayer() {
         audio = new Audio();
