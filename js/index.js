@@ -5,7 +5,7 @@ $(function () {
         currIndex = -1;
 
     function playPause() {
-        setInterval(function () {
+        setTimeout(function () {
             if (audio.paused) {
                 i.attr('class', 'iconfont icon-music');
                 audio.play();
@@ -16,8 +16,8 @@ $(function () {
         }, 300);
     }
 
-
     function selectTrack2(flag) {
+    for (; flag > 0; flag++) {
         /*
         * 歌单详细见
         * https://api.uomg.com/doc-rand.music.html
@@ -41,10 +41,11 @@ $(function () {
             }
         });
     }
+    }
     function initPlayer() {
         audio = new Audio();
 
-        selectTrack2(0);
+        selectTrack2(1);
 
         audio.loop = false;
 
