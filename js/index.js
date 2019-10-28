@@ -44,7 +44,7 @@ $(function () {
     function initPlayer() {
         audio = new Audio();
 
-        selectTrack2(1);
+        selectTrack2(0);
 
         audio.loop = false;
 
