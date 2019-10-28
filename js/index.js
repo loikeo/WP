@@ -49,6 +49,10 @@ $(function () {
         selectTrack2(1);
 
         audio.loop = false;
+        
+        audio.onended = function() {
+            selectTrack2(1);
+        };
 
         playPauseButton.on('click', playPause);
 
