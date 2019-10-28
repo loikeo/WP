@@ -34,7 +34,7 @@ $(function () {
 
                 audio.src = json.data.url;
 
-                for (; flag > 0; flag++) {
+                if (flag != 0) {
                     audio.play();
                 }
             }
