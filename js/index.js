@@ -24,7 +24,7 @@ $(function () {
         * https://api.uomg.com/doc-rand.music.html
         */
         $.getJSON('https://api.uomg.com/api/rand.music?', {
-            sort: '热歌榜'
+            mid: '2850086850'
             ,format: 'json'
         }, function(json, textStatus) {
             if (json.code == 1) {
