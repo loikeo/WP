@@ -49,7 +49,7 @@
 						</div>
 
 						<div>
-							<audio controls autoplay src="">
+							<audio id="miguaudio" controls autoplay src="">
 							您的浏览器不支持 audio 标签。
 							</audio>
 						</div>
@@ -130,8 +130,8 @@
 			var currentPage = 1
 			var pageSize = 10
 			var total = 9999
-			var audio = document.querySelector('audio');
-			audio.onended = function () {
+			var miguaudio = $('#miguaudio')[0];
+			miguaudio.onended = function () {
 			randomGet()
 			};
 			function keyDown(event, el) {
@@ -205,7 +205,7 @@
 				// 无损 formatType = SQ resourceType = E
 				// 高品 formatType = HQ resourceType = 2
 				let uri = `https://app.pd.nf.migu.cn/MIGUM2.0/v1.0/content/sub/listenSong.do?toneFlag=HQ&netType=00&userId=15548614588710179085069&ua=Android_migu&version=5.1&copyrightId=0&contentId=${contentId}&resourceType=2&channel=1`
-				audio.src = uri
+				miguaudio.src = uri
 			}
 			function loadVideo(url) {
 				var iptv =  url;;
