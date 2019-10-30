@@ -1,9 +1,7 @@
 $(function () {
     var playPauseButton = $("#play-pause-button"),
         i = playPauseButton.find('i'),
-        playNextTrackButton = $('#ydnext'),
-        buffInterval = null,
-        currIndex = -1;
+        playNextTrackButton = $('#ydnext');
 
     function playPause() {
         setTimeout(function () {
@@ -12,7 +10,6 @@ $(function () {
                 audio.play();
             } else {
                 i.attr('class', 'iconfont icon-bofang');
-                clearInterval(buffInterval);
                 audio.pause();
             }
         }, 300);
@@ -38,7 +35,6 @@ $(function () {
 
                 if (flag != 0) {
                     audio.play();
-                    clearInterval(buffInterval);
                 }
             }
         });
